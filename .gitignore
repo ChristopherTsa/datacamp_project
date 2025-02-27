@@ -21,3 +21,5 @@ dist/
 *.pkl
 
 .DS_Store
+
+data/
