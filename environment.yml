@@ -1,0 +1,13 @@
+name: ramp-battery-prediction
+channels:
+  - defaults
+dependencies:
+  - joblib
+  - matplotlib
+  - numpy
+  - pandas
+  - scikit-learn>=0.22
+  - seaborn
+  - pip
+  - pip:
+    - ramp-workflow
