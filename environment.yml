@@ -1,6 +1,7 @@
 name: ramp-battery-prediction
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - joblib
   - matplotlib
@@ -9,5 +10,7 @@ dependencies:
   - scikit-learn>=0.22
   - seaborn
   - pip
+  - requests
   - pip:
     - ramp-workflow
+    - pathlib

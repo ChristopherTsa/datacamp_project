@@ -1,6 +1,9 @@
+joblib
 matplotlib
 numpy
 pandas
 ramp-workflow
 scikit-learn>=0.22
 seaborn
+requests
+pathlib
