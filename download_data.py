@@ -1,10 +1,9 @@
 import os
 import requests
 import zipfile
-import tarfile
 import re
-from pathlib import Path
 import shutil
+from pathlib import Path
 
 def download_and_extract():
     # URL of the dataset
@@ -38,25 +37,26 @@ def download_and_extract():
             f.write(chunk)
     print(f"Downloaded file saved to {file_path}")
     
-    # Extract based on file extension
-    print(f"Extracting {filename}...")
-    if filename.endswith('.zip'):
-        with zipfile.ZipFile(file_path, 'r') as zip_ref:
-            zip_ref.extractall(data_dir)
-    elif filename.endswith(('.tar.gz', '.tgz')):
-        with tarfile.open(file_path, 'r:gz') as tar_ref:
-            tar_ref.extractall(data_dir)
-    elif filename.endswith('.tar'):
-        with tarfile.open(file_path, 'r') as tar_ref:
-            tar_ref.extractall(data_dir)
-    else:
-        print(f"Unsupported file format: {filename}. Cannot extract automatically.")
-        return
+    # Extract zip file directly to data directory
+    print(f"Extracting {filename} directly to data folder...")
+    with zipfile.ZipFile(file_path, 'r') as zip_ref:
+        for member in zip_ref.namelist():
+            # Extract each file directly to the data directory
+            # Skip directory entries in the zip
+            if not member.endswith('/'):
+                # Get just the filename without any subdirectory structure
+                filename = os.path.basename(member)
+                # Extract the file directly to the data directory
+                source = zip_ref.open(member)
+                target = open(os.path.join(data_dir, filename), "wb")
+                with source, target:
+                    shutil.copyfileobj(source, target)
     
-    print(f"Files extracted to {data_dir}")
-    
-    # Uncomment the line below if you want to delete the archive after extraction
-    # os.remove(file_path)
+    # Count the extracted files
+    csv_files = list(data_dir.glob('*.csv'))
+    txt_files = list(data_dir.glob('*.txt'))
+    print(f"Extraction complete. Found {len(csv_files)} CSV files and {len(txt_files)} TXT files in {data_dir}")
+    print(f"The original zip file has been kept at {file_path}")
 
 if __name__ == "__main__":
     download_and_extract()
