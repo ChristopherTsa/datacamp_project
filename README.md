@@ -17,6 +17,22 @@ pip install -U -r requirements.txt
 If you are using `conda`, we provide an `environment.yml` file for similar
 usage.
 
+### Download the data
+
+To download the dataset for this challenge, run the provided `download_data.py` script:
+
+```bash
+python download_data.py
+```
+
+This will:
+1. Download the battery cycling dataset from Carnegie Mellon University's KiltHub repository
+2. Create a `data` directory if it doesn't exist
+3. Extract all files from the downloaded zip archive directly into the `data` directory
+4. Keep the original zip file for reference
+
+The script will show progress information and confirmation when the download and extraction are complete.
+
 ### Challenge description
 
 The growth of electric aerial mobility has highlighted the importance of accurate battery health prediction. Battery degradation affects flight safety, mission planning, and maintenance costs for eVTOL vehicles. This challenge provides cycling data from Sony-Murata 18650 VTC-6 lithium-ion cells subjected to various operating conditions designed to simulate eVTOL flight profiles.
