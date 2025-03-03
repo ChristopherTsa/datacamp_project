@@ -1,5 +1,5 @@
 - ramp template + readme hugo
-- sujet cyp
+- sujet? deadline? ou envoyer?  cyp
 - notebook 2 ahmed
 - verif code chris 
 
