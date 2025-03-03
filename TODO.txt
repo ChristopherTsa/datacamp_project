@@ -1,5 +1,7 @@
-- ramp template
-- notebook 2
+- ramp template + readme hugo
+- sujet cyp
+- notebook 2 ahmed
+- verif code chris 
 
 
 Structure des données
