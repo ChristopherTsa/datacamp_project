@@ -3,11 +3,11 @@ import numpy as np
 import pandas as pd
 import rampwf as rw
 from sklearn.model_selection import ShuffleSplit
+from custom_score import R2
 
 problem_title = 'Predicting eVTOL Battery Degradation'
 _target_column_name = 'discharge_capacity'
 _prediction_label_names = [0]  # Regression problem
-
 # A type (class) which will be used to create wrapper objects for y_pred
 Predictions = rw.prediction_types.make_regression()
 
@@ -18,7 +18,7 @@ workflow = rw.workflows.Estimator()
 score_types = [
     rw.score_types.RMSE(name='rmse', precision=3),
     rw.score_types.RelativeRMSE(name='rel_rmse', precision=3),
-    rw.score_types.R2(name='r2', precision=3),
+    R2(name='r2', precision=3),
 ]
 
 def get_cv(X, y):
