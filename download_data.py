@@ -7,7 +7,7 @@ from pathlib import Path
 
 def download_and_extract():
     # URL of the dataset
-    url = "https://kilthub.cmu.edu/ndownloader/articles/14226830/versions/2"
+    url = "https://kilthub.cmu.edu/ndownloader/articles/14226830/versions/3"
     
     # Create data directory if it doesn't exist
     data_dir = Path("data")
