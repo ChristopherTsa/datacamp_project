@@ -9,8 +9,10 @@ dependencies:
   - pandas
   - scikit-learn>=0.22
   - seaborn
-  - pip
   - requests
+  - pathlib
+  - scipy
+  - zipfile36
+  - pip
   - pip:
-    - ramp-workflow
-    - pathlib
+      - ramp-workflow

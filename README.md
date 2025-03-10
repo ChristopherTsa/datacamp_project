@@ -30,6 +30,7 @@ This will:
 2. Create a `data` directory if it doesn't exist
 3. Extract all files from the downloaded zip archive directly into the `data` directory
 4. Keep the original zip file for reference
+5. Create the dataset for the problem.
 
 The script will show progress information and confirmation when the download and extraction are complete.
 
@@ -37,7 +38,7 @@ The script will show progress information and confirmation when the download and
 
 The growth of electric aerial mobility has highlighted the importance of accurate battery health prediction. Battery degradation affects flight safety, mission planning, and maintenance costs for eVTOL vehicles. This challenge provides cycling data from Sony-Murata 18650 VTC-6 lithium-ion cells subjected to various operating conditions designed to simulate eVTOL flight profiles.
 
-Your task is to predict the discharge capacity (in mAh) of batteries based on features extracted from their cycling data. The discharge capacity is a key indicator of battery health and directly relates to the remaining useful life of the battery. Accurate predictions will help operators schedule maintenance and ensure safe operation of eVTOL aircraft.
+Your task is to predict the maximum discharge capacity (in mAh) of batteries based on features extracted from their cycling data. The discharge capacity is a key indicator of battery health and directly relates to the remaining useful life of the battery. Accurate predictions will help operators schedule maintenance and ensure safe operation of eVTOL aircraft.
 
 ### Dataset description
 
@@ -56,17 +57,13 @@ Each raw data file contains time series measurements of:
 - Temperature
 - Cycle information
 
-For the competition, we've extracted cycle-level features from these raw time series data, including charge capacity, energy efficiency, voltage drop rates, and temperature statistics.
+For the competition, we've extracted cycle-level features from the raw time series data, including minimum current, minimum voltage, and maximum temperature for each cycle.
 
 ### Prediction task
 
-You must build a model to predict the `discharge_capacity` of batteries based on the provided features. This is a regression task evaluated using:
+You must build a model to predict the `discharge_capacity` of batteries based on the provided features. This is a regression task evaluated using the Root Mean Square Error (RMSE).
 
-- Root Mean Square Error (RMSE)
-- Relative Root Mean Square Error (Rel RMSE)
-- Coefficient of Determination (R²)
-
-Smaller RMSE and Rel RMSE values and higher R² values indicate better performance.
+Smaller RMSE value indicate better performance.
 
 ### Starting kit notebook
 
@@ -74,7 +71,6 @@ Get started with this RAMP challenge using the [battery degradation starting kit
 
 1. Exploring the dataset
 2. Visualizing battery cycling behavior
-3. Analyzing degradation patterns
 4. Feature engineering approaches
 5. Building baseline models
 
@@ -94,11 +90,6 @@ You can get more information regarding this command line:
 ```bash
 ramp-test --help
 ```
-
-### References
-
-1. Bills, A., Sripad, S., Fredericks, L., Guttenberg, M., Charles, D., Frank, E., & Viswanathan, V. (2020). Performance Metrics Required of Next-Generation Batteries to Electrify Commercial Aircraft. ACS Energy Letters, 5(2), 663-668.
-2. Various battery degradation models from literature (references available in the notebook).
 
 ### Acknowledgements
 

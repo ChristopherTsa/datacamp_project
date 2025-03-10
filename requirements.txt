@@ -7,3 +7,5 @@ scikit-learn>=0.22
 seaborn
 requests
 pathlib
+scipy
+zipfile36
